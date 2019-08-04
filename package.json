@@ -1,0 +1,46 @@
+{
+  "name": "react-async-di",
+  "version": "0.1.1",
+  "description": "react 依赖异步注入",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "scripts": {
+    "test": "jest",
+    "ci": "npm run test",
+    "clean": "rm -rf dist/*",
+    "build:es": "tsc -p tsconfig.build.es.json --outDir dist/es",
+    "build:lib": "tsc -p tsconfig.build.json --outDir dist/lib",
+    "build": "npm run clean && npm run build:lib && npm run build:es",
+    "prepublishOnly": "npm run ci && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/concefly/react-async-di.git"
+  },
+  "author": "concefly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/concefly/react-async-di/issues"
+  },
+  "homepage": "https://github.com/concefly/react-async-di#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.14",
+    "@types/react": "^16.8.24",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "@types/react-loadable": "^5.5.1",
+    "react-loadable": "^5.5.0",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "react": ">16.6"
+  },
+  "sideEffects": false
+}
