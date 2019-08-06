@@ -1,6 +1,6 @@
 {
   "name": "react-async-di",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "react 依赖异步注入",
   "files": [
     "dist"
