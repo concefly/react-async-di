@@ -7,8 +7,7 @@ export function withLazyInjectProps<P = any>(provider: () => Promise<P>, loading
     return Loadable({
       loader: async () => {
         const di = await provider();
-
-        const LazyComp = React.forwardRef<any, P>((props, ref) => {
+        const refFunc = (props, ref) => {
           const newProps = {
             ...di,
             ...props,
@@ -16,7 +15,10 @@ export function withLazyInjectProps<P = any>(provider: () => Promise<P>, loading
           };
 
           return React.createElement(Comp as any, newProps);
-        });
+        };
+        const name = Comp.displayName || Comp.name;
+        refFunc.displayName = `withLazyInjectProps(${name})`;
+        const LazyComp = React.forwardRef<any, P>(refFunc);
 
         return LazyComp;
       },
